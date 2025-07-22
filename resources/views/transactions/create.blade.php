@@ -19,13 +19,13 @@
     <label class="font-bold mx-3" for="amount">Amount</label>
     <input required class="my-3 ml-6 border-b border-b-slate-400 px-2 py-1 outline-none md:w-[80%] " type="number" name="amount" placeholder="Number of items">
 
-    <label class="font-bold mx-3" for="price">Price</label>
+    <label class="font-bold mx-3" for="price">Price (ETB)</label>
     <input required class="my-3 ml-6 border-b border-b-slate-400 px-2 py-1 outline-none md:w-[80%] " type="number" name="price" placeholder="Item price">
 
     <label class="font-bold mx-3" for="note">Remark</label>
     <input class="my-3 ml-6 border-b border-b-slate-400 px-2 py-1 outline-none md:w-[80%] " type="text" name="note" placeholder="Remark">
 
-    <input hidden class="my-3 ml-6 border-b border-b-slate-400 px-2 py-1 outline-none md:w-[80%] italic text-slate-800 " type="text" name="type" value={{$type}} disabled>
+    <input type="hidden" class="my-3 ml-6 border-b border-b-slate-400 px-2 py-1 outline-none md:w-[80%] italic text-slate-800 " name="type" value={{$type}}>
     <button type="submit" class="green-btn !mt-6">Add</button>
    </form>
 </x-layout>

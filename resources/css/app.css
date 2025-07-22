@@ -25,3 +25,14 @@ html{
     @apply px-4 py-2 rounded-full bg-green-500 hover:bg-green-600 active:bg-green-500 text-white m-2 cursor-pointer;
 }
 
+.red-tag{
+    @apply cursor-pointer bg-red-200 text-red-500 border border-red-500 p-3 rounded-sm m-3;
+}
+
+.green-tag{
+    @apply cursor-pointer bg-green-200 text-green-500 border border-green-500 p-3 rounded-sm m-3;
+}
+
+.slate-tag{
+    @apply cursor-pointer bg-slate-200 text-slate-500 border border-slate-500 p-3 rounded-sm m-3;
+}

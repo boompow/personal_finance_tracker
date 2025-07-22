@@ -9,7 +9,7 @@ use App\Models\Category;
 
 class Transaction extends Model
 {
-    protected $fillable = ['item', 'amount', 'price', 'note', 'user_id', 'category_id'];
+    protected $fillable = ['item', 'amount', 'price', 'note', 'type', 'user_id', 'category_id'];
     /** @use HasFactory<\Database\Factories\TransactionFactory> */
     use HasFactory;
 

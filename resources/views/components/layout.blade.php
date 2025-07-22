@@ -8,16 +8,17 @@
 </head>
 <body>
     <header>
-        <nav class="fixed top-0 flex backdrop-blur-sm px-4 h-[3rem] border-b border-b-slate-200 items-center w-[100vw] text-slate-800">
+        <nav class="fixed top-0 flex backdrop-blur-sm z-50 px-4 h-[3rem] border-b border-b-slate-200 items-center w-[100vw] text-slate-800">
             <a class="text-2xl" href="/"><strong class="pr-1 uppercase">Track</strong>Money</a>
             <div class="absolute right-4 flex gap-4">
+                <a class="hover:text-red-500 mx-4" href="{{route('categories.index')}}">Categories</a>
                 <a class="hover:text-red-500 mx-4" href="{{route('reports.index')}}">Report</a>
             </div>
         </nav>
     </header>
     {{-- flash message for successful response --}}
     @if (session('success'))
-        <div class="p-4 text-center bg-green-50 text-green-500 text-bold">
+        <div class="mt-[3rem] p-4 text-center bg-green-50 text-green-500 text-bold">
             {{session('success')}}
         </div>
     @endif

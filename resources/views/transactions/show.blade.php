@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="md:w-[80%] w-[100%] bg-slate-100 rounded-lg flex flex-col">
+    <div class="md:w-[80%] w-[100%] bg-blue-50 shadow-md rounded-lg flex flex-col">
         <div class="p-6 flex flex-col gap-3">
 
             @switch($transaction->type)
@@ -26,7 +26,7 @@
             </div>
             <p class="w-[100%] text-end italic text-slate-600 mt-4 mr-2 ">{{$transaction->created_at}}</p>
         </div>
-        <div class="bg-slate-200 w-[100%] flex justify-end items-center rounded-b-lg px-4">
+        <div class="bg-slate-300 w-[100%] flex justify-end items-center rounded-b-lg px-4">
             <form action="{{route('transactions.delete', $transaction->id)}}" method="POST">
                 @csrf
                 @method('DELETE')

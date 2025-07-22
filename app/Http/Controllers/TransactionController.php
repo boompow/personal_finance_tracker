@@ -33,14 +33,12 @@ class TransactionController extends Controller
             'amount'=> 'required|integer|gte:0',
             'price'=> 'required|numeric|gt:0',
             'note'=> 'nullable|string|max:1000',
-            'type'=>'required|in:expense, income'
+            'type'=>'required|in:expense,income',
             // 'category_id'=> 'required|integer|gte:0',
         ]);
 
         // fake user and category id
         $merged = [...$validated, 'user_id'=> 1, 'category_id'=>5];
-
-        dump($merged);
         
         Transaction::create($merged);
 

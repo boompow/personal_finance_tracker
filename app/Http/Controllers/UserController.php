@@ -8,8 +8,24 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function index(){
-        $transactions = Transaction::orderBy("created_at", "asc")->paginate(10);
+        $transactions = Transaction::orderBy("created_at", "desc")->paginate(10);
 
-        return view('welcome', ['transactions'=>$transactions]);
+        // calculating the balance of the total expense and income
+        $total = 0;
+
+        foreach($transactions as $transaction){
+            $price = $transaction->price;
+            $amount = $transaction->amount;
+            $type = $transaction->type;
+
+            if($type === "expense"){
+                $total -= ($price * $amount);
+            }
+            elseif($type === "income"){
+                $total += ($price * $amount);
+            }
+        }
+
+        return view('welcome', ['transactions'=>$transactions, 'total'=>$total]);
     }
 }
