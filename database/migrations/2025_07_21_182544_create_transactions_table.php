@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedInteger('amount');
             $table->decimal('price', 12, 2);
             $table->string('note')->nullable();
+            $table->enum('type', ['expense', 'income']); //transaction type
             
             $table->foreignId('user_id')->constrained();
             $table->foreignId('category_id')->constrained();

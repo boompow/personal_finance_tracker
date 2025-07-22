@@ -24,7 +24,8 @@ class TransactionFactory extends Factory
             'price'=>fake()->numberBetween(1, 1000000),
             'note'=>fake()->realText(10),
             'user_id'=>User::inRandomOrder()->first()->id,
-            'category_id'=>Category::inRandomOrder()->first()->id
+            'category_id'=>Category::inRandomOrder()->first()->id,
+            'type'=>fake()->randomElement(["expense", "income"])
         ];
     }
 }
