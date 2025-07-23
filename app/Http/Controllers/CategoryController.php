@@ -26,7 +26,8 @@ class CategoryController extends Controller
     }
 
 
-    public function delete($id){
+    public function delete(Request $request){
+        $id = $request->input('category_id');
         $category = Category::findOrFail($id);
 
         $category->delete();

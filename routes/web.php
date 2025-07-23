@@ -18,7 +18,7 @@ Route::delete('/transactions/show/{id}', [TransactionController::class, 'delete'
 Route::get('/categories/index', [CategoryController::class, 'index'])->name("categories.index");
 Route::post('/categories/create', [CategoryController::class, 'create'])->name("categories.create");
 Route::get('/categories/create/{type}', [CategoryController::class, 'goto'])->name("categories.goto");
-Route::delete('/categories/index/{id}', [CategoryController::class, 'delete'])->name("categories.delete");
+Route::delete('/categories/index', [CategoryController::class, 'delete'])->name("categories.delete");
 
 // Report CRUD
 Route::get('/reports/index', function () {
