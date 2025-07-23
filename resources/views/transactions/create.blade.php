@@ -22,6 +22,16 @@
     <label class="font-bold mx-3" for="price">Price (ETB)</label>
     <input required class="my-3 ml-6 border-b border-b-slate-400 px-2 py-1 outline-none md:w-[80%] " type="number" name="price" placeholder="Item price">
 
+    <label class="font-bold mx-3" for="price">Category</label>
+    <select name="category_id" id="category_id" required  class="my-3 ml-6 border-b border-b-slate-400 px-2 py-1 outline-none md:w-[80%] ">
+        <option value="" disabled selected>Select category</option>
+        @foreach ($categories as $category)
+            @if ($category->type == $type)
+                <option value="{{$category->id}}">{{$category->name}}</option>
+            @endif
+        @endforeach
+    </select>
+    
     <label class="font-bold mx-3" for="note">Remark</label>
     <input class="my-3 ml-6 border-b border-b-slate-400 px-2 py-1 outline-none md:w-[80%] " type="text" name="note" placeholder="Remark">
 

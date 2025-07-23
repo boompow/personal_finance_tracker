@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
@@ -47,6 +48,7 @@ class TransactionController extends Controller
     }
 
     public function goto($type){
-        return view('transactions.create', ['type'=>$type]);
+        $categories = Category::all();
+        return view('transactions.create', ['type'=>$type, 'categories'=>$categories]);
     }
 }

@@ -3,13 +3,26 @@
        <div class="flex flex-col my-4 backdrop-blur-md bg-blue-50/80 shadow-md border-slate-800 p-6 rounded-lg md:w-[80%] w-[100%]">
         <h1 class="text-4xl font-bold line mb-2">John Doe</h1>
         <label class="text-lg font-semibold ml-4 mb-2" for="balance">Balance</label>
-        <div class="flex ml-4 text-6xl">
+        <div class="flex ml-4 text-6xl items-center gap-4">
             @if ($total < 0)
                 <x-bxs-down-arrow class="w-5 text-red-500" />
             @else
                 <x-bxs-up-arrow class="w-5 text-green-500" />
             @endif
-            <h1 class="text-blue-950 font-semibold m-2">{{$total}} ETB</h1>
+            
+            {{-- togglable financial balance view implemented with alpine js --}}
+            <div x-data="{visible: false}">
+                <div x-show="visible" class="flex gap-4 items-center">
+                    <h1 class="text-blue-950 font-semibold m-2">{{$total}} ETB</h1>
+                    <button x-on:click='visible = !visible' class="p-3 rounded-full bg-slate-300 text-slate-700 hover:bg-slate-400 active:bg-slate-300"><x-eos-visibility class="w-5" /></button>
+                </div>
+
+                <div x-show="!visible" class="flex gap-4 items-center">
+                    <h1 class="text-blue-950 font-semibold m-2">**** ETB</h1>
+                    <button x-on:click='visible = !visible' class="p-3 rounded-full bg-slate-300 text-slate-700 hover:bg-slate-400 active:bg-slate-300"><x-eos-visibility-off class="w-5" /></button>
+                </div>
+                
+            </div>
         </div>
         <div class="flex my-2 items-center justify-end gap-4">
             <button class="red-btn" onclick="window.location='{{route('transactions.goto', 'expense')}}'">- Expense</button>
