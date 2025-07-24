@@ -11,17 +11,16 @@
             @endif
             
             {{-- togglable financial balance view implemented with alpine js --}}
-            <div x-data="{visible: false}">
-                <div x-show="visible" class="flex gap-4 items-center">
-                    <h1 class="text-blue-950 font-semibold m-2">{{$total}} ETB</h1>
-                    <button x-on:click='visible = !visible' class="p-3 rounded-full bg-slate-300 text-slate-700 hover:bg-slate-400 active:bg-slate-300"><x-eos-visibility class="w-5" /></button>
-                </div>
-
-                <div x-show="!visible" class="flex gap-4 items-center">
-                    <h1 class="text-blue-950 font-semibold m-2">**** ETB</h1>
-                    <button x-on:click='visible = !visible' class="p-3 rounded-full bg-slate-300 text-slate-700 hover:bg-slate-400 active:bg-slate-300"><x-eos-visibility-off class="w-5" /></button>
-                </div>
-                
+            <div x-data="{visible: false}" class="flex gap-4 items-center">
+                <h1 class="text-blue-950 font-semibold m-2" x-text="visible ? '@js($total) ETB' : '**** ETB'"></h1>
+                <button x-on:click='visible = !visible' class="p-3 rounded-full bg-slate-300 text-slate-700 hover:bg-slate-400 active:bg-slate-300">
+                    <template x-if="visible">
+                        <x-eos-visibility class="w-5" />
+                    </template>
+                    <template x-if="!visible">
+                        <x-eos-visibility-off class="w-5" />
+                    </template>
+                </button>
             </div>
         </div>
         <div class="flex my-2 items-center justify-end gap-4">
@@ -63,7 +62,7 @@
                         <td class="px-3 py-2">{{$transaction->item}}</td>
                         <td class="px-3 py-2">{{$transaction->amount}}</td>
                         <td class="px-3 py-2">{{$transaction->price}}</td>
-                        <td class="px-3 py-2">{{$transaction->category_id}}</td>
+                        <td class="px-3 py-2">{{$transaction->category->name}}</td>
                         <td class="px-3 py-2">{{$transaction->user_id}}</td>
                         <td class="px-3 py-2">{{$transaction->note}}</td>
                     @endforeach
