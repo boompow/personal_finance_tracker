@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function index(){
-        $transactions = Transaction::orderBy("created_at", "desc")->paginate(10);
+        $transactions = Transaction::with('category')->orderBy("created_at", "desc")->paginate(10);
 
         // calculating the balance of the total expense and income
         $total = 0;

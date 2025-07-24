@@ -44,7 +44,7 @@
                             <option value="" selected disabled>Select Category</option>
                             {{-- because the categories shown depend on the transaction type selected I used alpin js properties --}}
                             <template x-for="category in categories.filter(c=>c.type === type)" :key="category.id">
-                                <option :value="(category.id)" x-text="category.name"></option>
+                                <option :value="category.id" x-text="category.name"></option>
                             </template>
                         </select>
                     </div>

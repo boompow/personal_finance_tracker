@@ -38,8 +38,8 @@ class TransactionController extends Controller
             'category_id'=> 'required|integer|gte:0',
         ]);
 
-        // fake user and category id
-        $merged = [...$validated, 'user_id'=> 1, 'category_id'=>5];
+        // fake user
+        $merged = [...$validated, 'user_id'=> 1];
         
         Transaction::create($merged);
 
