@@ -73,17 +73,5 @@ Hello, This is a mini-project built as part of Kuraztech Backend-track Internshi
 - `resources/views/` - Blade templates for UI
 - `routes/web.php` - Web routes
 
-## Testing
-Run tests using Pest or PHPUnit:
-```powershell
-php artisan test
-```
-
-## License
-MIT
-
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
 ## Author
 Boompow
