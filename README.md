@@ -3,11 +3,11 @@
 
 Hello, This is a mini-project built as part of Kuraztech Backend-track Internship. It is a Laravel-based web application to help users manage their personal finances by tracking transactions, categorizing expenses/income. This project demonstrates full CRUD (Create, Read, Update, Delete) operations for transactions, categories, and users.
 
-![Welcome](public\asset\screenshots\welcome.PNG)
-![Dashboard](public\asset\screenshots\dashboard.PNG)
-![Categories](public\asset\screenshots\categories.PNG)
-![Create](public\asset\screenshots\create.PNG)
-![Transaction](public\asset\screenshots\transaction.PNG)
+![Welcome](public/asset/screenshots/welcome.PNG)
+![Dashboard](public/asset/screenshots/dashboard.PNG)
+![Categories](public/asset/screenshots/categories.PNG)
+![Create](public/asset/screenshots/create.PNG)
+![Transaction](public/asset/screenshots/transaction.PNG)
 
 ## Features
 - User authentication and profile management
