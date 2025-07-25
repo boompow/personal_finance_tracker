@@ -4,22 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
     public function index(){
-        $categories = Category::orderBy("created_at", "desc")->paginate(10);
+        $expenseCategories = Category::where('user_id', Auth::id())->where('type', 'expense')->orderBy("created_at", "desc")->get();
+        $incomeCategories = Category::where('user_id', Auth::id())->where('type', 'income')->orderBy("created_at", "desc")->get();
 
-        return view('categories.index', ['categories'=>$categories]);
+        return view('categories.index', ['expenseCategories'=>$expenseCategories, 'incomeCategories'=>$incomeCategories]);
     }
 
     public function create(Request $request){
         $validated = $request->validate([
-            'name'=> 'required|string|max:20|min:1',
+            'name'=> 'required|string|max:20',
             'type'=>'required|in:expense,income',
         ]);
 
-        Category::create($validated);
+        $merged = [...$validated, 'user_id'=>Auth::id()];
+
+        Category::create($merged);
 
         return redirect()->route('categories.index')->with('success', "New Category Created!");
 
@@ -28,11 +32,11 @@ class CategoryController extends Controller
 
     public function delete(Request $request){
         $id = $request->input('category_id');
-        $category = Category::findOrFail($id);
+        $category = Category::where('user_id', Auth::id())->findOrFail($id);
 
         $category->delete();
 
-        return redirect()->route('categories.index')->with('success', "Category Delted Successfully!");
+        return redirect()->route('categories.index')->with('success', "Category Deleted Successfully!");
     }
 
     public function goto($type){

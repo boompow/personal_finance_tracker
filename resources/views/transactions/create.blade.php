@@ -1,4 +1,4 @@
-<x-layout>
+<x-app-layout>
    <form action="{{route('transactions.create')}}" method="POST"
     class="bg-white border border-slate-400 rounded-lg p-6 m-2 flex flex-col justify-start max-w-[800px] w-[100%]"
    >
@@ -14,16 +14,16 @@
             @break           
     @endswitch
     <label class="font-bold mx-3" for="item">Item</label>
-    <input required class="my-3 ml-6 border-b border-b-slate-400 px-2 py-1 outline-none md:w-[80%] " type="text" name="item" placeholder="Item name">
+    <input required class="input-bar" type="text" name="item" placeholder="Item name">
 
     <label class="font-bold mx-3" for="amount">Amount</label>
-    <input required class="my-3 ml-6 border-b border-b-slate-400 px-2 py-1 outline-none md:w-[80%] " type="number" name="amount" placeholder="Number of items">
+    <input required class="input-bar" type="number" name="amount" placeholder="Number of items">
 
     <label class="font-bold mx-3" for="price">Price (ETB)</label>
-    <input required class="my-3 ml-6 border-b border-b-slate-400 px-2 py-1 outline-none md:w-[80%] " type="number" name="price" placeholder="Item price">
+    <input required class="input-bar" type="number" name="price" placeholder="Item price">
 
     <label class="font-bold mx-3" for="price">Category</label>
-    <select name="category_id" id="category_id" required  class="my-3 ml-6 border-b border-b-slate-400 px-2 py-1 outline-none md:w-[80%] ">
+    <select name="category_id" id="category_id" required  class="input-bar">
         <option value="" disabled selected>Select category</option>
         @foreach ($categories as $category)
             @if ($category->type === $type)
@@ -33,9 +33,9 @@
     </select>
     
     <label class="font-bold mx-3" for="note">Remark</label>
-    <input class="my-3 ml-6 border-b border-b-slate-400 px-2 py-1 outline-none md:w-[80%] " type="text" name="note" placeholder="Remark">
+    <input class="input-bar" type="text" name="note" placeholder="Remark">
 
-    <input type="hidden" class="my-3 ml-6 border-b border-b-slate-400 px-2 py-1 outline-none md:w-[80%] italic text-slate-800 " name="type" value={{$type}}>
+    <input type="hidden" class="input-bar" name="type" value={{$type}}>
     <button type="submit" class="green-btn !mt-6">Add</button>
    </form>
-</x-layout>
+</x-app-layout>

@@ -1,61 +1,83 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Personal Finance Tracker
 
-## About Laravel
+Hello, This is a mini-project built as part of Kuraztech Backend-track Internship. It is a Laravel-based web application to help users manage their personal finances by tracking transactions, categorizing expenses/income. This project demonstrates full CRUD (Create, Read, Update, Delete) operations for transactions, categories, and users.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Features
+- User authentication and profile management
+- Transaction tracking (expenses and income)
+- Category management
+- Dashboard and reports
+- RESTful CRUD operations for all main entities
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## CRUD Operations
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 1. Transactions
+- **Create:** Users can add new transactions specifying item, amount, price, note, type (expense/income), category, and user.
+- **Read:** View a list of all transactions, filter by category, type, or user. Detailed view for each transaction.
+- **Update:** Edit transaction details such as item, amount, price, note, type, category, and user.
+- **Delete:** Remove transactions from the system.
 
-## Learning Laravel
+### 2. Categories
+- **Create:** Add new categories to organize transactions (e.g., Food, Salary, Utilities).
+- **Read:** View all categories and see associated transactions.
+- **Update:** Edit category names and details.
+- **Delete:** Remove categories (with proper handling of associated transactions).
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 3. Users
+- **Create:** Register new users via authentication system.
+- **Read:** View user profiles and their transaction history.
+- **Update:** Edit user profile information.
+- **Delete:** Remove users (admin only, with cascading effects on transactions).
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Technology Stack
+- **Backend:** Laravel (PHP)
+- **Frontend:** Blade templates, Tailwind CSS, Vite
+- **Database:** SQLite
+- **Testing:** Pest, PHPUnit
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Getting Started
+1. **Clone the repository:**
+   ```powershell
+   git clone <repo-url>
+   cd personal_finance_tracker
+   ```
+2. **Install dependencies:**
+   ```powershell
+   composer install; npm install
+   ```
+3. **Set up environment:**
+   - Copy `.env.example` to `.env` and configure database settings.
+   - Run migrations and seeders:
+     ```powershell
+     php artisan migrate --seed
+     ```
+4. **Start the development server:**
+   ```powershell
+   php artisan serve
+   ```
+5. **Access the app:**
+   Open [http://localhost:8000](http://localhost:8000) in your browser.
 
-## Laravel Sponsors
+## Project Structure
+- `app/Models/` - Eloquent models for User, Category, Transaction
+- `app/Http/Controllers/` - Controllers for handling CRUD logic
+- `database/migrations/` - Database schema
+- `database/factories/` - Model factories for testing/seeding
+- `resources/views/` - Blade templates for UI
+- `routes/web.php` - Web routes
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Testing
+Run tests using Pest or PHPUnit:
+```powershell
+php artisan test
+```
 
 ## License
+MIT
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## Author
+Boompow

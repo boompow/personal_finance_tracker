@@ -1,21 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700&display=swap');
-
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
-
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
-    --ff: "Poppins", sans-serif 
-}
-
-html{
-    font-family: var(--ff);
-}
 
 .red-btn{
     @apply px-4 py-2 rounded-full bg-red-500 hover:bg-red-600 active:bg-red-500 text-white m-2 cursor-pointer;
@@ -38,4 +28,8 @@ html{
 
 .slate-tag{
     @apply cursor-pointer bg-slate-200 text-slate-500 border border-slate-500 p-3 rounded-sm m-3;
+}
+
+.input-bar{
+    @apply outline-none appearance-none my-3 ml-6 border-b border-b-slate-400 px-2 py-1 md:w-[80%];
 }

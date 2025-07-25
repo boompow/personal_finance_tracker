@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('note')->nullable();
             $table->enum('type', ['expense', 'income']); //transaction type
             
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('category_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
         });
     }
 

@@ -1,4 +1,4 @@
-<x-layout>
+<x-app-layout>
     <div class="md:w-[80%] w-[100%] bg-blue-50 shadow-md rounded-lg flex flex-col">
         <div class="p-6 flex flex-col gap-3">
 
@@ -34,4 +34,4 @@
             </form>
         </div>
     </div>
-</x-layout>
+</x-app-layout>

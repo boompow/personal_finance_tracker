@@ -5,27 +5,29 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
     public function index(){
-        $transactions = Transaction::with('category')->orderBy("created_at", "asc")->paginate(10);
+        $transactions = Transaction::where('user_id', Auth::id())->with('category')->orderBy("created_at", "asc")->paginate(10);
 
-        return view('transactions.index', ['transactions'=>$transactions]);
+        // dashboard is the new transaction.index
+        return view('dashboard', ['transactions'=>$transactions]);
     }
 
 
     public function show($id){
-        $transaction = Transaction::with('category')->findOrFail($id);
+        $transaction = Transaction::where('user_id', Auth::id())->with('category')->findOrFail($id);
 
         return view("transactions.show", ['transaction'=>$transaction,]);
     }
 
     public function delete($id){
-        $transaction = Transaction::findOrFail($id);
+        $transaction = Transaction::where('user_id', Auth::id())->findOrFail($id);
         $transaction -> delete();
 
-        return redirect()->route('welcome')->with('success','Transaction Deleted Successfully!');
+        return redirect()->route('dashboard')->with('success','Transaction Deleted Successfully!');
     }
 
     public function create(Request $request){
@@ -36,25 +38,26 @@ class TransactionController extends Controller
             'note'=> 'nullable|string|max:1000',
             'type'=>'required|in:expense,income',
             'category_id'=> 'required|integer|gte:0',
+
         ]);
 
         // fake user
-        $merged = [...$validated, 'user_id'=> 1];
+        $merged = [...$validated, 'user_id'=> Auth::id()];
         
         Transaction::create($merged);
 
 
-        return redirect()->route('welcome')->with('success', "Transaction created successfully!");
+        return redirect()->route('dashboard')->with('success', "Transaction created successfully!");
     }
 
     public function goto($type){
-        $categories = Category::all();
+        $categories = Category::where('user_id', Auth::id())->get();
         return view('transactions.create', ['type'=>$type, 'categories'=>$categories]);
     }
 
     public function gotoedit($id){
-        $transaction = Transaction::with('category')->findOrFail($id);
-        $categories = Category::all();
+        $transaction = Transaction::where('user_id', Auth::id())->with('category')->findOrFail($id);
+        $categories = Category::where('user_id', Auth::id())->get();
 
         return view('transactions.edit', ['transaction'=>$transaction, 'categories'=>$categories]);
     }
@@ -69,10 +72,10 @@ class TransactionController extends Controller
             'category_id'=> 'required|integer|gte:0',
         ]);
 
-        $transaction = Transaction::findOrFail($id);
+        $transaction = Transaction::where('user_id', Auth::id())->findOrFail($id);
 
         $transaction->update($validated);
 
-        return view('transactions.show', ['id'=>$id, 'transaction'=>$transaction]);
+         return redirect()->route('transactions.show', ['id'=>$id, 'transaction'=>$transaction])->with('success','Transaction Edited Successfully!');
     }
 }

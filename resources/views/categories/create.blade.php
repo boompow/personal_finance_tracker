@@ -1,4 +1,4 @@
-<x-layout>
+<x-app-layout>
     <form action="{{route('categories.create')}}" method="POST"
     class="bg-white border border-slate-400 rounded-lg p-6 m-2 flex flex-col justify-start max-w-[800px] w-[100%]"
    >
@@ -20,4 +20,4 @@
 
      <button type="submit" class="green-btn !mt-6">Create</button>
 </form>
-</x-layout>
+</x-app-layout>

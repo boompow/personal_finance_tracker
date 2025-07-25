@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     public function index(){
-        $transactions = Transaction::with('category')->orderBy("created_at", "desc")->paginate(10);
+        $transactions = Transaction::where('user_id', Auth::id())->with('category')->orderBy("created_at", "desc")->paginate(10);
+
+        $user = Auth::user();
 
         // calculating the balance of the total expense and income
         $total = 0;
@@ -26,6 +30,6 @@ class UserController extends Controller
             }
         }
 
-        return view('welcome', ['transactions'=>$transactions, 'total'=>$total]);
+        return view('dashboard', ['transactions'=>$transactions, 'total'=>$total, 'user'=>$user]);
     }
 }
